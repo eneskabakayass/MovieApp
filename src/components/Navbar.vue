@@ -1,4 +1,4 @@
-<<template>
+<template>
   <div id="app">
     <header class="flex justify-around   items-center px-6 py-4 bg-[#032540] text-white">
       <div class="flex items-center space-x-8">

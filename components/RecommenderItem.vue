@@ -1,7 +1,7 @@
-<script setup lang="ts">
+<script setup>
 import { ref, watch, onMounted, defineProps } from 'vue'
 import CardItem from './layout/CardItem.vue'
-import { fetchMovies } from './FetchFunctions/fetchMovies';
+import { fetchMovies } from './FetchFunctions/fetchMovies.js';
 
 const props = defineProps({
   searchTerm: String
@@ -26,7 +26,7 @@ watch(() => props.searchTerm, async (newTerm) => {
   if (newTerm && newTerm.length >= 3) {
     movies.value = await fetchMovies(`https://api.themoviedb.org/3/search/movie?api_key=348088421ad3fb3a9d6e56bb6a9a8f80&query=${ newTerm }&include_adult=false&language=en-US&page=1`);
   } else {
-    fetchPopularMovies();
+    await fetchPopularMovies();
   }
 });
 
@@ -36,8 +36,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="mt-4 pl-52">
-    <div class="flex items-center justify-start">
+  <div class="mt-4 flex flex-col flex-wrap content-around">
+    <div class="flex items-center">
       <h2 class="mr-5 font-semibold text-xl">What's Popular</h2>
       <div class="flex items-center justify-center">
         <div class="relative flex w-64 h-10 border border-[#032540] rounded-full overflow-hidden cursor-pointer">
@@ -51,10 +51,10 @@ onMounted(() => {
         </div>
       </div>
     </div>
-      <div class="w-[1400px] gap-2 overflow-scroll">
-        <div class="h-max w-fit flex">
-          <CardItem v-for="movie in movies" :key="movie.id" :movie="movie" />
-        </div>
+    <div class="w-[1400px] gap-2 overflow-scroll">
+      <div class="h-max w-fit flex">
+        <CardItem v-for="movie in movies" :key="movie.id" :movie="movie" />
       </div>
+    </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script>
-import { useStore } from '../store/store.js'; // Pinia store'unuz
+import { useStore } from '~/stores/store.js';
 import { computed, defineComponent } from 'vue';
 
 export default defineComponent({

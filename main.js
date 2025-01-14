@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import App from '@/App.vue';
-import './assets/tailwind.css';
+import App from './App.vue';
+import '././assets/tailwind.css';
 import 'primeicons/primeicons.css';
 
 const app = createApp(App);

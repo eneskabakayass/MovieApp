@@ -15,11 +15,13 @@
 
     if (searchTerm.value.length >= 3) {
       emitSearchTerm(searchTerm.value);
+    } else if (searchTerm.value.length === 0) {
+      emitSearchTerm('');
     }
   }
 </script>
 <template>
-  <section class="relative bg-cover bg-center text-white h-[400px] w-full" style="background-image: url(../public/icon/mainHero.jpg);">
+  <section class="relative bg-cover bg-center text-white h-[400px] w-full" style="background-image: url(/icon/mainHero.jpg);">
     <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center px-4 text-center">
       <div class="w-full pl-72 pr-72">
         <div class="w-full flex flex-col items-start">

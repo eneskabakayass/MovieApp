@@ -23,9 +23,10 @@ const fetchTopRatedMovies = async () => {
 }
 
 watch(() => props.searchTerm, async (newTerm) => {
+  console.log(newTerm.length)
   if (newTerm && newTerm.length >= 3) {
     movies.value = await fetchMovies(`https://api.themoviedb.org/3/search/movie?api_key=348088421ad3fb3a9d6e56bb6a9a8f80&query=${ newTerm }&include_adult=false&language=en-US&page=1`);
-  } else {
+  } else if (newTerm.length === 0) {
     await fetchPopularMovies();
   }
 });

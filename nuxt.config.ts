@@ -1,7 +1,11 @@
 export default defineNuxtConfig({
-  buildModules: [
+  modules: [
+    '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
-    '@nuxtjs/tailwindcss'
   ],
-  compatibilityDate: '2025-01-14',
+  css: [
+    'primeicons/primeicons.css',
+  ],
+
+  compatibilityDate: '2025-01-15',
 });

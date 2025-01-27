@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch, onMounted, defineProps } from 'vue'
-import CardItem from './layout/CardItem.vue'
+import CardItem from './pageLayout/CardItem.vue'
 import { fetchMovies } from './FetchFunctions/fetchMovies.js';
 
 const props = defineProps({

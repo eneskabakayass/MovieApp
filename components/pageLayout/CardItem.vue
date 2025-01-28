@@ -11,24 +11,33 @@ export default defineComponent({
   },
   setup(props) {
     const store = useStore();
-
+    const router = useRouter();
     const isFavorite = computed(() => store.isFavorite(props.movie));
 
     const toggleFavorite = () => {
       store.toggleFavorite(props.movie);
     };
 
+    const redirectToMovieDetail = () => {
+      router.push({
+        path: `/movie/${ props.movie.id }`,
+        query: {
+          movie: JSON.stringify(props.movie)
+        }
+      });
+    };
+
     const getImageUrl = () => {
       return `https://image.tmdb.org/t/p/w220_and_h330_face/${props.movie.poster_path}`;
     };
 
-    return { isFavorite, toggleFavorite, getImageUrl };
+    return { isFavorite, toggleFavorite, getImageUrl, redirectToMovieDetail };
   },
 });
 </script>
 
 <template>
-  <div class="w-44 mt-6 p-2 relative">
+  <div class="w-44 mt-6 p-2 relative" @click="redirectToMovieDetail">
     <img class="w-full h-auto rounded-xl mb-4 object-cover" :src="getImageUrl()" :alt="`Poster of ${movie.title}`" />
     <div class="flex justify-center items-center w-10 h-10 absolute p-2 rounded-full border-4 border-[#20c774] z-10 top-56 left-5 leading-none text-center text-xs font-bold text-white bg-[#081c21]">
       {{ movie.vote_average.toFixed(1) }}

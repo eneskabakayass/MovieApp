@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { ref, watch } from 'vue';
 import NavItem from '../../components/Navbar.vue';
 import PageContentView from '../../components/pageLayout/PageInfoLayout.vue';
